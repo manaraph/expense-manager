@@ -6,7 +6,10 @@
 
             <!-- Icon -->
             <div class="fadeIn first">
-                <span class="glyphicon glyphicon-user"></span>
+                <!-- <span class="glyphicon glyphicon-user"></span> -->
+                <v-avatar color="#56baed">
+                    <v-icon dark>account_circle</v-icon>
+                </v-avatar>
             </div>
 
             <!-- Login Form -->
@@ -39,6 +42,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+/* @import '~material-design-icons-iconfont/src/material-design-icons'; */
 @import '../assets/css/style.css';
 
 h3 {

@@ -1,19 +1,19 @@
 <template>
   <div id="app">
-    <!-- <login/> -->
-    <expense/>
+    <login/>
+    <!-- <expense/> -->
   </div>
 </template>
 
 <script>
-import Expense from './components/Expense.vue'
-// import Login from './components/Login.vue'
+// import Expense from './components/Expense.vue'
+import Login from './components/Login.vue'
 
 export default {
   name: 'app',
   components: {
-    // Login,
-    Expense
+    Login,
+    // Expense
   }
 }
 </script>
