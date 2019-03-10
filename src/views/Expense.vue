@@ -1,31 +1,41 @@
 <template>
   <div class="hello">
-    <div class="wrapper fadeInDown">
-        <div id="formContent">
-            <!-- Tabs Titles -->
-            <!-- Icon -->
-            <div class="fadeIn first">
-                <span class="glyphicon glyphicon-user"></span>
-            </div>
-
-            <!-- Login Form -->
-            <form>
-            <input type="text" id="username" class="fadeIn second" name="username" placeholder="username">
-            <input type="text" id="expense" class="fadeIn second" name="expense" placeholder="expense">
-            <input type="text" id="reason" class="fadeIn third" name="reason" placeholder="reason">
-            <input type="submit" class="fadeIn fourth" value="Log In">
-            </form>
-
+    <div class="wrapper">
+      <div id="expenseInput" class="">
+        <div class="theInput">
+          <datepicker  placeholder="Select Date"  v-model="vmodelexample"></datepicker>
         </div>
+        <div class="theInput">
+          <input type="text" id="amount" class="fadeIn second" name="amount" placeholder="Enter Amount">
+        </div>
+        <div class="">
+          <input type="textarea" id="reason" class="fadeIn second" name="reason" placeholder="Reason">
+        </div>
+
+
+      </div>
+      <button>Add expense</button>
+      <!-- <v-date-picker v-model="picker" :landscape="landscape" :reactive="reactive"></v-date-picker> -->
+      <!-- <div>{{ vmodelexample}}</div> -->
     </div>
   </div>
 </template>
 
 <script>
+import Datepicker from 'vuejs-datepicker';
+
 export default {
   name: 'expense',
+  components: {
+    Datepicker
+  },
   props: {
     msg: String
+  },
+  data(){
+    return{
+      vmodelexample: ''
+    }
   }
 }
 </script>
@@ -48,4 +58,35 @@ li {
 a {
   color: #42b983;
 }
+/* #expenseInput{
+  width: 100%;
+  margin: 0 auto;
+  background-color: #f6f6f6;
+}
+.theInput {
+  width: auto;
+  margin: 5%;
+  float:  left !important;
+  height: auto;
+  background: white;
+}
+input[type=text]{
+  background: white;
+  
+}
+#reason{
+  width: 35%;
+  background: white;
+}
+button{
+  background-color: #4CAF50; 
+  border: none;
+  color: white;
+  padding: 5px 8px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px; 
+  border-radius: 3px; 
+} */
 </style>
