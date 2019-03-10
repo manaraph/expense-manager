@@ -1,26 +1,12 @@
 <template>
   <div id="app">
-    <header>
-      <h3>Please log in to view your expense(s)</h3>
-    </header>
-    <login/>
-    <!-- <expense/> -->
-    <footer> <p>&copy;{{new Date().getFullYear()}} - manaraph (Omachonu Manasseh). </p></footer>
+    <header><h3>Please log in to view your expense(s)</h3></header>
+
+    <router-view/>
+
+    <footer> <p>&copy; {{new Date().getFullYear()}} - manaraph (Omachonu Manasseh). </p></footer>  
   </div>
 </template>
-
-<script>
-// import Expense from './components/Expense.vue'
-import Login from './components/Login.vue'
-
-export default {
-  name: 'app',
-  components: {
-    Login,
-    // Expense
-  }
-}
-</script>
 
 <style>
 header{
