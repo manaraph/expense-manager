@@ -15,7 +15,8 @@
     "vue": "^2.6.8",
     "vue-router": "^3.0.1",
     "vuejs-datepicker": "^1.5.4",
-    "vuetify": "^1.5.5"
+    "vuetify": "^1.5.5",
+    "webpack-bundle-analyzer": "^3.3.2"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.5.0",
