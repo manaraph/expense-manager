@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    <header><h3>Please log in to view your expense(s)</h3></header>
-
     <router-view/>
 
     <footer> <p>&copy; {{new Date().getFullYear()}} - manaraph (Omachonu Manasseh). </p></footer>  

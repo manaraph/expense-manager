@@ -3,7 +3,9 @@
     <div class="wrapper">
       <div id="expenseInput" class="">
         <div class="theInput">
-          <datepicker  placeholder="Select Date"  v-model="vmodelexample"></datepicker>
+          <div>
+            <datepicker  placeholder="Select Date"  v-model="vmodelexample"></datepicker>
+          </div>
         </div>
         <div class="theInput">
           <input type="text" id="amount" class="fadeIn second" name="amount" placeholder="Enter Amount">
