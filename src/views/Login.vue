@@ -8,7 +8,6 @@
 
             <!-- Icon -->
             <div class="fadeIn first">
-                <!-- <span class="glyphicon glyphicon-user"></span> -->
                 <v-avatar color="#56baed">
                     <v-icon dark>account_circle</v-icon>
                 </v-avatar>

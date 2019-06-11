@@ -257,4 +257,12 @@ html {
   #icon {
     width:60%;
   }
+  .roundIcons{
+    border-radius: 50%;
+  }
+  .floatPlus{
+    position: absolute;
+    bottom: 70px;
+    right: 30px;
+  }
   

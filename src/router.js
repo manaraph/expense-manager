@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Login from './views/Login.vue'
 import Expense from './views/Expense'
+import Expenses from './views/Expenses'
 
 Vue.use(Router)
 
@@ -17,6 +18,12 @@ export default new Router({
       // path: '/expense',
       name: 'Expense',
       component: Expense
+    },
+    {
+      path: '/expenses',
+      // path: '/expense',
+      name: 'Expenses',
+      component: Expenses
     }
     // {
     //   path: '/about',
