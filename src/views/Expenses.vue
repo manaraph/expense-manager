@@ -66,7 +66,6 @@
                             offset-y
                             full-width
                             min-width="200px"
-                            max-height="250px"
                         >
                             <template v-slot:activator="{ on }">
                             <v-text-field
@@ -88,12 +87,12 @@
                     </v-layout>
                     <v-spacer></v-spacer>
                     <br>
-              <v-flex xs12>
+              <v-flex xs12 sm6 md6>
                 <v-text-field v-model="editedItem.amount" label="Amount" type="number" required xs12 sm12 md6></v-text-field>
-                <v-flex xs12 sm6 d-flex><v-select :currency="currency" label="Select Currency" ></v-select></v-flex>
-                <v-chip xs12 sm12 md6 label>{{(editedItem.amount * 0.2).toFixed(2)}}</v-chip>
               </v-flex>
-              <v-flex xs12 sm12 md4>
+              <v-flex xs12 sm6 md6 d-flex><v-select :items="currency" label="Select Currency" box></v-select></v-flex>
+              <v-flex><v-chip xs12 sm12 md12 label >Total Amount Spent (With Tax): <span class="red--text title" id="taxedAmount"> {{(editedItem.amount * 0.2).toFixed(2)}}</span></v-chip></v-flex>
+              <v-flex xs12 sm12 md12>
                 <v-textarea v-model="editedItem.purpose" label="Purpose*" name="input-7-4" required></v-textarea>
               </v-flex>
             </v-layout>
