@@ -54,7 +54,7 @@
           <v-container grid-list-md>
             <v-layout wrap>
                 <v-layout row justify-center>
-                    <v-flex xs12 sm12 md10>
+                    <v-flex xs12>
                         <v-menu
                             ref="menu"
                             v-model="menu"
@@ -88,10 +88,12 @@
                     </v-layout>
                     <v-spacer></v-spacer>
                     <br>
-              <v-flex xs12 sm12 md4>
-                <v-text-field v-model="editedItem.amount" label="Amount" type="number" required></v-text-field>
-              </v-flex>
               <v-flex xs12>
+                <v-text-field v-model="editedItem.amount" label="Amount" type="number" required xs12 sm12 md6></v-text-field>
+                <v-flex xs12 sm6 d-flex><v-select :currency="currency" label="Select Currency" ></v-select></v-flex>
+                <v-chip xs12 sm12 md6 label>{{(editedItem.amount * 0.2).toFixed(2)}}</v-chip>
+              </v-flex>
+              <v-flex xs12 sm12 md4>
                 <v-textarea v-model="editedItem.purpose" label="Purpose*" name="input-7-4" required></v-textarea>
               </v-flex>
             </v-layout>
@@ -127,6 +129,7 @@
             
         ],
         desserts: [],
+        currency: ['Naira', 'Pound', 'Dollar', 'Euro'],
         editedIndex: -1,
         editedItem: {
           id: 1,
