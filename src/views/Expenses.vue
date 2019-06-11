@@ -16,10 +16,10 @@
     >
       <template v-slot:items="props">
         <td>{{ props.item.name }}</td>
-        <td class="text-xs-right">{{ props.item.calories }}</td>
-        <td class="text-xs-right">{{ props.item.fat }}</td>
-        <td class="text-xs-right">{{ props.item.carbs }}</td>
-        <td class="text-xs-right">{{ props.item.protein }}</td>
+        <td class="text-xs-right">{{ props.item.date }}</td>
+        <td class="text-xs-right">{{ props.item.amount }}</td>
+        <td class="text-xs-right">{{ props.item.purpose }}</td>
+        <!-- <td class="text-xs-right">{{ props.item.protein }}</td> -->
         <td class="justify-center layout px-0">
           <v-icon
             small
@@ -89,10 +89,10 @@
                     <v-spacer></v-spacer>
                     <br>
               <v-flex xs12 sm12 md4>
-                <v-text-field label="Amount" type="number" required></v-text-field>
+                <v-text-field v-model="editedItem.amount" label="Amount" type="number" required></v-text-field>
               </v-flex>
               <v-flex xs12>
-                <v-textarea label="Purpose*" name="input-7-4" required></v-textarea>
+                <v-textarea v-model="editedItem.purpose" label="Purpose*" name="input-7-4" required></v-textarea>
               </v-flex>
             </v-layout>
           </v-container>
@@ -146,6 +146,75 @@
             // carbs: 0,
             // protein: 0
         }
-    })
+    }),
+
+      computed: {
+      formTitle () {
+        return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
+      }
+    },
+
+    watch: {
+      dialog (val) {
+        val || this.close()
+      }
+    },
+
+    created () {
+      this.initialize()
+    },
+
+    methods: {
+      initialize () {
+        this.desserts = [
+          {
+            date: '2019-06-11',
+            amount: 159,
+            Purpose: 'Clothing',
+            
+          },
+          {
+           date: '2019-06-10',
+            amount: 115,
+            Purpose: 'Education',
+          },
+          {
+            date: '2019-06-08',
+            amount: 364,
+            Purpose: 'Food',
+          },
+         
+        ]
+      },
+
+      editItem (item) {
+        this.editedIndex = this.desserts.indexOf(item)
+        this.editedItem = Object.assign({}, item)
+        this.dialog = true
+      },
+
+      deleteItem (item) {
+        const index = this.desserts.indexOf(item)
+        confirm('Are you sure you want to delete this item?') && this.desserts.splice(index, 1)
+      },
+
+      close () {
+        this.dialog = false
+        setTimeout(() => {
+          this.editedItem = Object.assign({}, this.defaultItem)
+          this.editedIndex = -1
+        }, 300)
+      },
+
+      save () {
+        if (this.editedIndex > -1) {
+          Object.assign(this.desserts[this.editedIndex], this.editedItem)
+        } else {
+          this.desserts.push(this.editedItem)
+        }
+        this.close()
+      }
+    }
   }
+    
 </script>

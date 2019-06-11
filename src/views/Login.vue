@@ -49,7 +49,7 @@ export default {
   methods:{
     handleSubmit(){
       // alert("Here");
-      this.$router.push("/expense");
+      this.$router.push("/expenses");
       // this.$router.push("/search?"+this.foobar); //foobar can be name of input field
       
     }
