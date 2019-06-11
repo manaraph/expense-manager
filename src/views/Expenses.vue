@@ -15,11 +15,10 @@
       class="elevation-1"
     >
       <template v-slot:items="props">
-        <td>{{ props.item.name }}</td>
-        <td class="text-xs-right">{{ props.item.date }}</td>
-        <td class="text-xs-right">{{ props.item.amount }}</td>
-        <td class="text-xs-right">{{ props.item.purpose }}</td>
-        <!-- <td class="text-xs-right">{{ props.item.protein }}</td> -->
+        <td>{{ props.item.id }}</td>
+        <td class="text-xs-left">{{ props.item.date }}</td>
+        <td class="text-xs-left">{{ props.item.amount }}</td>
+        <td class="text-xs-left">{{ props.item.purpose }}</td>
         <td class="justify-center layout px-0">
           <v-icon
             small
@@ -48,7 +47,8 @@
       </template>
       <v-card>
         <v-card-title>
-          <span class="headline">Add Expense</span>
+          <!-- <span class="headline">Add Expense</span> -->
+          <span class="headline">{{ formTitle }}</span>
         </v-card-title>
         <v-card-text>
           <v-container grid-list-md>
@@ -101,7 +101,7 @@
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="blue darken-1" flat @click="dialog = false">Close</v-btn>
-          <v-btn color="blue darken-1" flat @click="dialog = false">Save</v-btn>
+          <v-btn color="blue darken-1" flat @click="save()">Save</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -120,37 +120,37 @@
         menu2: false,
         dialog: false,
         headers: [
+            { text: 'S/N', align: 'center', value: 'name'},
             { text: 'Date', align: 'left', sortable: true, value: 'name'},
             { text: 'Expenses', value: 'amount' },
-            { text: 'Purpose', value: 'purpose' },
-            // { text: 'Carbs (g)', value: 'carbs' },
-            // { text: 'Protein (g)', value: 'protein' },
-            // { text: 'Actions', value: 'name', sortable: false }
+            { text: 'Purpose', align: 'left', value: 'purpose' },
+            
         ],
         desserts: [],
         editedIndex: -1,
         editedItem: {
-            date: '',
-            purpose: '',
-            amount: 0,
-            // fat: 0,
-            // carbs: 0,
-            // protein: 0
+          id: 1,
+          date: '',
+          purpose: '',
+          amount: 0,
+          // fat: 0,
+          // carbs: 0,
+          // protein: 0
         },
         defaultItem: {
-            date: '',
-            purpose: '',
-            amount: 0,
-            // calories: 0,
-            // fat: 0,
-            // carbs: 0,
-            // protein: 0
+          date: '',
+          purpose: '',
+          amount: 0,
+          // calories: 0,
+          // fat: 0,
+          // carbs: 0,
+          // protein: 0
         }
     }),
 
       computed: {
       formTitle () {
-        return this.editedIndex === -1 ? 'New Item' : 'Edit Item'
+        return this.editedIndex === -1 ? 'Add Expense' : 'Edit Expense'
       }
     },
 
@@ -168,20 +168,23 @@
       initialize () {
         this.desserts = [
           {
-            date: '2019-06-11',
+            id: 1,
+            date: '2019-06-10',
             amount: 159,
-            Purpose: 'Clothing',
+            purpose: 'Clothing',
             
           },
           {
-           date: '2019-06-10',
+            id: 2,
+           date: '2019-06-09',
             amount: 115,
-            Purpose: 'Education',
+            purpose: 'Education',
           },
           {
+            id: 3,
             date: '2019-06-08',
             amount: 364,
-            Purpose: 'Food',
+            purpose: 'Food',
           },
          
         ]
@@ -207,6 +210,10 @@
       },
 
       save () {
+        /* eslint-disable */
+        this.editedItem.id = this.desserts[this.desserts.length-1].id + 1;
+        this.editedItem.date = this.date;
+        
         if (this.editedIndex > -1) {
           Object.assign(this.desserts[this.editedIndex], this.editedItem)
         } else {
