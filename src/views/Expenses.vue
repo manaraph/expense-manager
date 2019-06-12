@@ -91,7 +91,7 @@
                 <v-text-field v-model="editedItem.amount" label="Amount" type="number" required xs12 sm12 md6></v-text-field>
               </v-flex>
               <v-flex xs12 sm6 md6 d-flex><v-select :items="currency" label="Select Currency" box></v-select></v-flex>
-              <v-flex><v-chip xs12 sm12 md12 label >Total Amount Spent (With Tax): <span class="red--text title" id="taxedAmount"> {{(editedItem.amount * 0.2).toFixed(2)}}</span></v-chip></v-flex>
+              <v-flex><v-chip xs12 sm12 md12 label >Total Amount Spent (With Tax): <span class="red--text title" id="taxedAmount"> {{computeTaxedAmount()}}</span></v-chip></v-flex>
               <v-flex xs12 sm12 md12>
                 <v-textarea v-model="editedItem.purpose" label="Purpose*" name="input-7-4" required></v-textarea>
               </v-flex>
@@ -159,7 +159,8 @@
     watch: {
       dialog (val) {
         val || this.close()
-      }
+      },
+      
     },
 
     created () {
@@ -190,6 +191,11 @@
           },
          
         ]
+      },
+
+      computeTaxedAmount(){
+        let tax = parseFloat((this.editedItem.amount * 0.2).toFixed(2));    
+        return parseFloat(this.editedItem.amount) + tax;
       },
 
       editItem (item) {
