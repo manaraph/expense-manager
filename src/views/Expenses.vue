@@ -113,6 +113,9 @@
 
 
 <script>
+  require('dotenv').config({path: '.env.local'});
+  import axios from "axios";
+
   export default {
     data: () => ({
         date: new Date().toISOString().substr(0, 10),
@@ -128,6 +131,7 @@
             
         ],
         desserts: [],
+        exchangeRate: [],
         currency: ['Naira', 'Pound', 'Dollar', 'Euro'],
         editedIndex: -1,
         editedItem: {
@@ -165,6 +169,9 @@
 
     created () {
       this.initialize()
+    },
+    mounted () {
+      
     },
 
     methods: {

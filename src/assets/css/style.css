@@ -46,7 +46,8 @@ html {
     width: 90%;
     max-width: 450px;
     position: relative;
-    padding: 0px;
+    padding: 20px;
+    margin: 50px;
     -webkit-box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     box-shadow: 0 30px 60px 0 rgba(0,0,0,0.3);
     text-align: center;

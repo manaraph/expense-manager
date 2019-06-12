@@ -5,16 +5,19 @@ import Vuetify from 'vuetify'
 import materialIcons from 'material-design-icons-iconfont/dist/material-design-icons.css'
 
 Vue.use(Vuetify)
-import 'vuetify/dist/vuetify.min.css' // Ensure you are using css-loader
+import 'vuetify/dist/vuetify.min.css'; // Ensure you are using css-loader
 
-Vue.use(BootstrapVue)
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-import router from './router'
+Vue.use(BootstrapVue);
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+import router from './router';
 
-Vue.use(materialIcons)
+Vue.use(materialIcons);
+Vue.use(VueAxios, axios)
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 new Vue({
   router,
