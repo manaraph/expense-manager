@@ -1,6 +1,6 @@
 <template>
 <div>
-        <v-toolbar flat color="white">
+    <v-toolbar flat color="white">
       <v-toolbar-title>My Expenses</v-toolbar-title>
       <v-divider
         class="mx-2"
@@ -54,47 +54,49 @@
           <v-container grid-list-md>
             <v-layout wrap>
                 <v-layout row justify-center>
-                    <v-flex xs12>
-                        <v-menu
-                            ref="menu"
-                            v-model="menu"
-                            :close-on-content-click="false"
-                            :nudge-right="40"
-                            :return-value.sync="date"
-                            lazy
-                            transition="scale-transition"
-                            offset-y
-                            full-width
-                            min-width="200px"
-                        >
-                            <template v-slot:activator="{ on }">
-                            <v-text-field
-                                v-model="date"
-                                slot="activator"
-                                label="Date of Expense (Click to change date)"
-                                prepend-icon="event"
-                                readonly
-                                v-on="on"
-                            ></v-text-field>
-                            </template>
-                            <v-date-picker v-model="date" no-title scrollable required>
-                            <v-spacer></v-spacer>
-                            <v-btn flat color="primary" @click="menu = false">Cancel</v-btn>
-                            <v-btn flat color="primary" @click="$refs.menu.save(date)">OK</v-btn>
-                            </v-date-picker>
+                  <v-flex xs10 align-content-center offset-xs1>
+                    <v-menu
+                      ref="menu"
+                      v-model="menu"
+                      :close-on-content-click="false"
+                      :nudge-right="40"
+                      :return-value.sync="date"
+                      lazy
+                      transition="scale-transition"
+                      offset-y
+                      full-width
+                      min-width="200px"
+                      >
+                        <template v-slot:activator="{ on }">
+                        <v-text-field
+                            v-model="date"
+                            slot="activator"
+                            label="Date of Expense (Click to change date)"
+                            prepend-icon="event"
+                            readonly
+                            v-on="on"
+                        ></v-text-field>
+                        </template>
+                        <v-date-picker v-model="date" no-title scrollable required>
+                        <v-spacer></v-spacer>
+                        <v-btn flat color="primary" @click="menu = false">Cancel</v-btn>
+                        <v-btn flat color="primary" @click="$refs.menu.save(date)">OK</v-btn>
+                        </v-date-picker>
                         </v-menu>
-                        </v-flex>
+                      </v-flex>
+                      <v-flex xs12 sm5 md3>
+                        <v-text-field v-model="editedItem.amount" label="Amount" type="number" required xs12 sm12 md6></v-text-field>
+                      </v-flex>
+                      <v-flex xs12 sm5 md5 offset-xs1 offset-lg2>
+                        <v-select :items="currency" label="Select Currency"></v-select>
+                      </v-flex>
+                      <v-flex xs10><v-chip xs12 sm12 md12 label >Total Amount Spent (With 20% Tax): <span class="red--text title" id="taxedAmount"> {{computeTaxedAmount()}}</span></v-chip></v-flex>
+                      <v-flex xs10>
+                        <v-textarea v-model="editedItem.purpose" label="Purpose*" name="input-7-4" required></v-textarea>
+                      </v-flex>
                     </v-layout>
                     <v-spacer></v-spacer>
                     <br>
-              <v-flex xs12 sm6 md6>
-                <v-text-field v-model="editedItem.amount" label="Amount" type="number" required xs12 sm12 md6></v-text-field>
-              </v-flex>
-              <v-flex xs12 sm6 md6 d-flex><v-select :items="currency" label="Select Currency" box></v-select></v-flex>
-              <v-flex><v-chip xs12 sm12 md12 label >Total Amount Spent (With Tax): <span class="red--text title" id="taxedAmount"> {{computeTaxedAmount()}}</span></v-chip></v-flex>
-              <v-flex xs12 sm12 md12>
-                <v-textarea v-model="editedItem.purpose" label="Purpose*" name="input-7-4" required></v-textarea>
-              </v-flex>
             </v-layout>
           </v-container>
           <small class="red--text" >All fields are required</small>
@@ -139,18 +141,11 @@
           date: '',
           purpose: '',
           amount: 0,
-          // fat: 0,
-          // carbs: 0,
-          // protein: 0
         },
         defaultItem: {
           date: '',
           purpose: '',
           amount: 0,
-          // calories: 0,
-          // fat: 0,
-          // carbs: 0,
-          // protein: 0
         }
     }),
 

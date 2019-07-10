@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app">`
     <router-view/>
 
     <footer> <p>&copy; {{new Date().getFullYear()}} - manaraph (Omachonu Manasseh). </p></footer>  
@@ -25,6 +25,7 @@ h3{
   color: #2c3e50;
   margin-top: 60px;
 }
+
 footer{
   left: 0;
   bottom: 0;
